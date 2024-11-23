@@ -1,17 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import Layout from "./components/Layout";
 import UsuariosLista from "./pages/UsuariosLista";
 import UsuariosForm from "./pages/UsuarioForm";
-import Home from "./pages/Home";
+import HomeAdmin from "./pages/HomeAdmin";
 import AgendamentosForm from "./pages/AgendamentoForm";
 import AgendamentosLista from "./pages/AgendamentosLista";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <BrowserRouter future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/admin" element={<HomeAdmin />} />
           <Route path="/usuarios-list" element={<UsuariosLista />} />
           <Route path="/usuarios-form" element={<UsuariosForm />} />
           <Route path="/usuarios-form/:id" element={<UsuariosForm />} />

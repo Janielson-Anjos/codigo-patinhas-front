@@ -1,0 +1,57 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+  background-color: #fff;
+  height: 500px;
+}
+
+.hero-content {
+  max-width: 50%;
+  margin-left: 100px;
+}
+
+.hero-content h1 {
+  font-size: 62px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+.hero-content .highlight {
+  color: #f7b500; /* Amarelo */
+}
+
+.hero-content p {
+  font-size: 1rem;
+  color: #323232;
+  margin: 20px 0;
+  line-height: 1.6;
+  width: 500px;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 10px 40px;
+  background-color: #f7b500;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  text-transform: uppercase;
+}
+
+.hero-button:hover {
+  background-color: #e5a300;
+}
+
+.hero-image img {
+  max-width: 500px;
+  width: 100%;
+}
+
+.hero-image{
+    margin-right: 100px;
+}
