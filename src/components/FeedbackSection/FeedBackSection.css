@@ -1,0 +1,57 @@
+.feedback-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .feedback-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .feedback-section .highlight {
+    color: #f5a623; /* Cor destaque */
+    font-weight: bold;
+  }
+  
+  .feedback-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .feedback-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .feedback-card img.user-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  .feedback-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .feedback-card .user-role {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .feedback-card .user-comment {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #333;
+  }
+  

@@ -6,6 +6,7 @@ import HomeAdmin from "./pages/HomeAdmin";
 import AgendamentosForm from "./pages/AgendamentoForm";
 import AgendamentosLista from "./pages/AgendamentosLista";
 import LandingPage from "./pages/LandingPage";
+import LoginLandingPage from "./pages/Login";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginLandingPage />} />
+          <Route path="/cadastro" element={<LoginLandingPage />} />
           <Route path="/admin" element={<HomeAdmin />} />
           <Route path="/usuarios-list" element={<UsuariosLista />} />
           <Route path="/usuarios-form" element={<UsuariosForm />} />

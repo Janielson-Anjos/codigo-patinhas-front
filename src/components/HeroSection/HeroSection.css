@@ -20,7 +20,8 @@
 }
 
 .hero-content .highlight {
-  color: #f7b500; /* Amarelo */
+  color: #f7b500;
+  transition: color 0.5s ease;
 }
 
 .hero-content p {
@@ -45,6 +46,7 @@
 
 .hero-button:hover {
   background-color: #e5a300;
+  transition: background-color 0.5s ease;
 }
 
 .hero-image img {

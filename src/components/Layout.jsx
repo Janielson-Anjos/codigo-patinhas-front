@@ -1,12 +1,22 @@
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import { useEffect, useState } from "react";
 
 function Layout({ children }) {
   const location = useLocation();
+  const [isLoginPage, setIsLoginPage] = useState();
+
+  useEffect(() => {
+    if(location.pathname === "/login") {
+      setIsLoginPage(true)
+    } else {
+      setIsLoginPage(false)
+    }
+  }, [location])
 
   // Rotas onde o layout não será aplicado
-  const noLayoutRoutes = ["/"];
+  const noLayoutRoutes = ["/"] || ["/login"] || [];
 
   // Verifica se a rota atual está nas rotas sem layout
   const isNoLayoutRoute = noLayoutRoutes.includes(location.pathname);
@@ -16,14 +26,20 @@ function Layout({ children }) {
     return <>{children}</>;
   }
 
+  if (setIsLoginPage){
+    return <>{children}</>;
+  }
+
   // Renderiza o layout padrão para todas as outras rotas
   return (
     <div className="d-flex flex-column vh-100">
-      <Header />
+      {!isLoginPage && <Header />}
       <main className="flex-grow-1 py-4" style={{ backgroundColor: "#f8f9fa" }}>
-        <div className="container">{children}</div>
+        <div className="container">
+          {children}
+        </div>
       </main>
-      <Footer />
+      {!isLoginPage && <Footer />}
     </div>
   );
 }

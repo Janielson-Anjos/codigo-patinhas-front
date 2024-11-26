@@ -1,34 +1,41 @@
 import React from "react";
 import "./NavbarLandingPage.css";
 import logo from "../../assets/image/logo.png";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll"; // Renomeamos o Link do react-scroll para evitar conflito
+import { Link as RouterLink } from "react-router-dom"; // Importamos o Link do React Router
 
 function NavBarLandingPage() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        {/* <span className="logo-bold">Codigo</span>{" "}
-        <span className="logo-highlight">Patinhas</span> */}
-        {/* <img src="../assets/image/logo.png" alt="Paw Icon" className="logo-icon" /> */}
         <img src={logo} alt="Paw Icon" className="logo-icon" />
       </div>
       <ul className="navbar-menu">
-      <li>
-          <Link to="home" smooth={true} duration={500}>Home</Link>
+        <li>
+          <ScrollLink to="home" smooth={true} duration={500}>
+            Home
+          </ScrollLink>
         </li>
         <li>
-          <Link to="tips" smooth={true} duration={500}>Dicas</Link>
+          <ScrollLink to="tips" smooth={true} duration={500}>
+            Dicas
+          </ScrollLink>
         </li>
         <li>
-          <Link to="about" smooth={true} duration={500}>Sobre</Link>
+          <ScrollLink to="about" smooth={true} duration={500}>
+            Sobre
+          </ScrollLink>
         </li>
         <li>
-          <Link to="app" smooth={true} duration={500}>Feedback</Link>
+          <ScrollLink to="feedback" smooth={true} duration={500}>
+            Feedback
+          </ScrollLink>
         </li>
       </ul>
-      <a href="#access" className="navbar-access-btn">
+      {/* Corrigido para usar o RouterLink para navegação entre páginas */}
+      <RouterLink to="/login" className="navbar-access-btn">
         Acessar
-      </a>
+      </RouterLink>
     </nav>
   );
 }

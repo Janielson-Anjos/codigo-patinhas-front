@@ -19,7 +19,8 @@
   }
   
   .logo-highlight {
-    color: #f7b500; /* Amarelo */
+    color: #f7b500;
+    transition: color 0.5s ease;
   }
   
   .logo-icon {
@@ -46,6 +47,7 @@
   
   .navbar-menu li:hover {
     color: #f7b500;
+    transition: color 0.5s ease;
   }
   
   .navbar-access-btn {
@@ -60,5 +62,6 @@
   
   .navbar-access-btn:hover {
     background-color: #e5a300;
+    transition: background-color 0.5s ease;
   }
   
