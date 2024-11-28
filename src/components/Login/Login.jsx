@@ -265,10 +265,12 @@
 // export default Login;
 
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 import { HiOutlineArrowRight } from "react-icons/hi";
+import { login } from "../../services/ApiService"
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -279,6 +281,7 @@ function Login() {
   const [endereco, setEndereco] = useState("");
   const [error, setError] = useState(false);
   const [senhaErro, setSenhaErro] = useState(false);
+  const { sign } = useContext(AuthContext)
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -295,6 +298,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log("entrou aqui");
     try {
       const response = await login(email, senha);
       if (response.status !== 200) {
@@ -305,6 +309,8 @@ function Login() {
       navigate("/");
     } catch (error) {
       setError(true);
+      console.log("2");
+      
     }
   };
 

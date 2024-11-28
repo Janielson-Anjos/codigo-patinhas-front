@@ -4,7 +4,8 @@ import instagram from "../../assets/image/instagram.png";
 import facebook from "../../assets/image/facebook.png";
 import twitter from "../../assets/image/twitter.png";
 import logo from "../../assets/image/logo.png";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll"; // Renomeamos o Link do react-scroll para evitar conflito
+import { Link as RouterLink } from "react-router-dom"; // Importamos o Link do React Router
 
 // function FooterLandingPage() {
 //   return (
@@ -79,24 +80,24 @@ function FooterLandingPage() {
           }}
         >
           <li>
-            <Link to="home" smooth={true} duration={500}>
+            <ScrollLink to="home" smooth={true} duration={500}>
               Home
-            </Link>
+            </ScrollLink>
           </li>
           <li>
-            <Link to="tips" smooth={true} duration={500}>
+            <ScrollLink to="tips" smooth={true} duration={500}>
               Dicas
-            </Link>
+            </ScrollLink>
           </li>
           <li>
-            <Link to="about" smooth={true} duration={500}>
+            <ScrollLink to="about" smooth={true} duration={500}>
               Sobre
-            </Link>
+            </ScrollLink>
           </li>
           <li>
-            <Link to="feedback" smooth={true} duration={500}>
+            <ScrollLink to="feedback" smooth={true} duration={500}>
               Feedback
-            </Link>
+            </ScrollLink>
           </li>
         </ul>
         <div className="footer-social">
@@ -124,9 +125,9 @@ function FooterLandingPage() {
           <h2>
             Adote pets e salve vidas.
           </h2>
-          <a href="#acessar" className="hero-button">
-            Adote Agora
-          </a>
+          <RouterLink to="/login" className="hero-button">
+          Adote Agora
+          </RouterLink>
         </div>
       </div>
       <hr />

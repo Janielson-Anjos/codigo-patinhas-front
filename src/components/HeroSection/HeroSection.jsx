@@ -1,6 +1,7 @@
 import React from "react";
 import "./HeroSection.css";
 import imagem from "../../assets/image/dog-cat.png";
+import { Link } from "react-router-dom"
 
 const HeroSection = () => {
   return (
@@ -15,9 +16,9 @@ const HeroSection = () => {
           abrigo modernizou o processo de adoção, conectando você ao seu novo
           companheiro de maneira rápida e sem burocracia.
         </p>
-        <a href="#acessar" className="hero-button">
+        <Link to="/login" className="hero-button">
         Conheça Nossos Pets
-        </a>
+        </Link>
       </div>
       <div className="hero-image">
         <img src={imagem} alt="Cachorro e Gato" />

@@ -2,6 +2,7 @@ import React from "react";
 import "./AdditionalLandingPage.css";
 import imagem from "../../assets/image/additional.png";
 import imagemicone from "../../assets/image/icone-logo.png";
+import { Link } from "react-router-dom"
 
 const AdditionalLandingPage = () => {
   return (
@@ -19,9 +20,9 @@ const AdditionalLandingPage = () => {
             Adote um animal de estimação e dê-lhe um lar, ele retribuirá o seu
             amor incondicionalmente.
           </p>
-          <a href="#acessar" className="hero-button">
+          <Link to="/login" className="hero-button">
           Adote Agora
-          </a>
+          </Link>
         </div>
         <div className="hero-image">
           <img src={imagem} alt="Cachorro e Gato" />
