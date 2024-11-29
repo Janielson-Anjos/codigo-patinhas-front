@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { BsCalendar2Check, BsHouse, BsPeople, BsPersonPlus } from "react-icons/bs";
+import logo from "../assets/image/logo-branca.png";
 
 function Header() {
   return (
-    <header className="bg-dark text-white">
+    <header className="bg-dark text-dark">
       <div className="container">
         <nav className="navbar navbar-expand navbar-dark">
           <Link to="/" className="navbar-brand">
-            <h1></h1>
+            <img src={logo} alt="" />
           </Link>
           <div className="navbar-nav ms-auto">
             <li className="nav-item">

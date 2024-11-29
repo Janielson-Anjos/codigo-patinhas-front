@@ -6,7 +6,7 @@ import { Link as RouterLink } from "react-router-dom"; // Importamos o Link do R
 
 function NavBarLandingPage() {
   return (
-    <nav className="navbar">
+    <nav className="navbar-landing ">
       <div className="navbar-logo">
         <img src={logo} alt="Paw Icon" className="logo-icon" />
       </div>

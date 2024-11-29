@@ -269,14 +269,14 @@ import { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import { login } from "../../services/ApiService"
+import { login, salvarUsuario } from "../../services/ApiService"
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [nomeCompleto, setNomeCompleto] = useState("");
+  const [nome_completo, setNomeCompleto] = useState("");
   const [telefone, setTelefone] = useState("");
   const [endereco, setEndereco] = useState("");
   const [error, setError] = useState(false);
@@ -306,7 +306,7 @@ function Login() {
         return;
       }
       sign(response.data);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       setError(true);
       console.log("2");
@@ -314,26 +314,72 @@ function Login() {
     }
   };
 
-  const handleCadastro = (e) => {
-    e.preventDefault();
-
+  const handleCadastro = async (e) => {
+    e.preventDefault();  // Certifique-se de evitar o comportamento padrão
+  
     if (senha !== confirmarSenha) {
       setSenhaErro(true);
       return;
     }
-
+  
     setSenhaErro(false);
-
-    console.log({
-      nomeCompleto,
+  
+    // Criação do objeto de dados
+    const data = {
+      nome_completo,
       email,
       telefone,
       endereco,
       senha,
-    });
-    alert("Cadastro realizado com sucesso!");
-    navigate("/login");
+    };
+  
+    try {
+      const response = await salvarUsuario(data);
+      if (response.status !== 201) {
+        setError(true);
+        return;
+      }
+      alert("Cadastro realizado com sucesso!");
+      navigate("/login");  // Navegar para a página de login após sucesso
+    } catch (error) {
+      setError(true);
+      console.log("Erro no cadastro:", error);
+      alert('Erro ao fazer cadastro, reveja os campos e tente novamente');
+    }
   };
+
+  // const handleCadastro = async (data) => {
+
+  //   if (senha !== confirmarSenha) {
+  //     setSenhaErro(true);
+  //     return;
+  //   }
+
+  //   setSenhaErro(false);
+
+  //   try {
+  //     const response = await salvarUsuario(data);
+  //     if (response.status !== 201) {
+  //       setError(true);
+  //       return;
+  //     }
+  //     navigate("/login");
+  //   } catch (error) {
+  //     setError(true);
+  //     console.log("2");
+      
+  //   }
+
+  //   console.log({
+  //     nomeCompleto,
+  //     email,
+  //     telefone,
+  //     endereco,
+  //     senha,
+  //   });
+  //   alert("Cadastro realizado com sucesso!");
+  //   navigate("/login");
+  // };
 
   return (
     <div className="login-conteudo">
@@ -352,14 +398,14 @@ function Login() {
                 <>
                   <div className="row">
                     <div className="col-12 mb-3">
-                      <label htmlFor="nomeCompleto" className="form-label">
+                      <label htmlFor="nome_completo" className="form-label">
                         Nome completo
                       </label>
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Digite seu nome completo"
-                        value={nomeCompleto}
+                        value={nome_completo}
                         onChange={(e) => setNomeCompleto(e.target.value)}
                       />
                     </div>

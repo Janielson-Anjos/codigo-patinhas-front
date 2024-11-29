@@ -1,11 +1,13 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
+.navbar-landing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; /* Certifique-se de que o z-index funcione */
+  z-index: 10; /* Aumente o valor conforme necessário */
+}
   
   .navbar-logo {
     display: flex;

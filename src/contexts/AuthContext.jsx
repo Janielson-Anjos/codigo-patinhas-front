@@ -16,8 +16,12 @@ const AuthProvider = ({children}) => {
         localStorage.setItem("token", data.token);
     }
 
+    const getToken = () => {
+        return token || localStorage.getItem("token");
+    }
+
     return (
-        <AuthContext.Provider value={{ usuarioId, token, sign}}>
+        <AuthContext.Provider value={{ usuarioId, token, sign, getToken}}>
             {children}
         </AuthContext.Provider>
     )
