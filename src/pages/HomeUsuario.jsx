@@ -57,7 +57,7 @@ function HomeUsuario() {
             type="text"
             value={searchText}
             onChange={handleSearchChange}
-            placeholder="Pesquisar por espécie ou status..."
+            placeholder="Pesquisar por nome, espécie ou status..."
             style={{
               padding: "10px",
               width: "100%",

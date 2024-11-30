@@ -123,7 +123,8 @@ function PetCards({ searchText }) {
     const searchLowerCase = searchText.toLowerCase();
     return (
       pet.especie.toLowerCase().includes(searchLowerCase) ||
-      pet.status.toLowerCase().includes(searchLowerCase)
+      pet.status.toLowerCase().includes(searchLowerCase) ||
+      pet.nome.toLowerCase().includes(searchLowerCase)
     );
   });
 

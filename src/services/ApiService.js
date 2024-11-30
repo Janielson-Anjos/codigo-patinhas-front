@@ -90,6 +90,7 @@
 
 import axios from "axios";
 
+
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
     headers: {
@@ -97,17 +98,26 @@ const api = axios.create({
     },
 });
 
-export const buscarUsuarios = () => api.get('/usuario');
-export const buscarUsuarioPorId = (id) => api.get(`/usuario/${id}`)
+const adicionarToken = (token) => {
+  if (token) {
+    api.defaults.headers['Authorization'] = `Bearer ${token}`;
+  }else {
+    // Opcional: Limpar o cabeçalho caso o token esteja ausente
+    delete api.defaults.headers['Authorization'];
+  }
+}
+
+// export const buscarUsuarios = () => api.get('/usuario');
+// export const buscarUsuarioPorId = (id) => api.get(`/usuario/${id}`)
 export const salvarUsuario = (usuario) => api.post(`/usuario`, usuario)
-export const deleteUsuario = (id) => api.delete(`/usuario/${id}`)
-export const editarUsuario = (usuario, id) => api.put(`/usuario/${id}`, usuario)
+// export const deleteUsuario = (id) => api.delete(`/usuario/${id}`)
+// export const editarUsuario = (usuario, id) => api.put(`/usuario/${id}`, usuario)
 
 // export const buscarPets = () => api.get('/pet');
-export const buscarPetPorId = (id) => api.get(`/pet/${id}`)
-export const salvarPet = (pet) => api.post(`/pet`, pet)
-export const editarPet = (pet, id) => api.put(`/pet/${id}`, pet)
-export const excluirPet = (id) => api.delete(`/pet/${id}`)
+// export const buscarPetPorId = (id) => api.get(`/pet/${id}`)
+// export const salvarPet = (pet) => api.post(`/pet`, pet)
+// export const editarPet = (pet, id) => api.put(`/pet/${id}`, pet)
+// export const excluirPet = (id) => api.delete(`/pet/${id}`)
 
 export const login = (email, senha) => api.post(`/login`, {email, senha})
 
@@ -120,7 +130,7 @@ export const excluirAgendamento = (id) => api.delete(`/agendamentos/${id}`)
 
 export const buscarPets = async () => {
     try {
-      const response = await api.get('/pets');  // Aqui estamos utilizando a instância 'api'
+      const response = await api.get('/pet');  // Aqui estamos utilizando a instância 'api'
       return response.data;  // Retorna os dados dos pets
     } catch (error) {
       console.error("Erro ao buscar os pets:", error);
@@ -128,6 +138,130 @@ export const buscarPets = async () => {
     }
   };
 
+  export const buscarUsuarios = async (token) => {
+    try {
+      console.log('Token enviado:', token); // Log para ver o token
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/usuario`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  export const deleteUsuario = async (userId, token) => {
+    try {
+      const response = await axios.delete(`${import.meta.env.VITE_API_URL}/usuario/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,  // Certifique-se de incluir o token no cabeçalho
+        }
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+  export const excluirPet = async (petId, token) => {
+    try {
+      const response = await axios.delete(`${import.meta.env.VITE_API_URL}/pet/${petId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,  // Certifique-se de incluir o token no cabeçalho
+        }
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  export const buscarUsuarioPorId = async (userId, token) => {
+    try {
+      const token = localStorage.getItem("token");
+      console.log('Token enviado:', token);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}usuario/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error('Erro ao buscar usuário:', error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
+  export const buscarPetPorId = async (petId, token) => {
+    try {
+      const token = localStorage.getItem("token");
+      console.log('Token enviado:', token);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}pet/${petId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error('Erro ao buscar usuário:', error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
+
+  export const salvarPet = async (pet) => {
+    const token = localStorage.getItem("token"); // Ajuste de acordo com como você salva o token
+    return axios.post(`${import.meta.env.VITE_API_URL}pet`, pet, {
+      headers: {
+        Authorization: `Bearer ${token}`, // Envie o token
+        "Content-Type": "application/json", // Certifique-se do formato correto
+      },
+    });
+  };
+
+  export const editarPet = async (pet, id) => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}pet/${id}`, // URL para editar o pet
+        pet, // Dados do pet a ser atualizado
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Enviando o token de autenticação
+            "Content-Type": "application/json", // Definindo o tipo de conteúdo
+          },
+        }
+      );
+  
+      return response.data; // Retorna a resposta da requisição
+    } catch (error) {
+      console.error("Erro ao editar pet:", error.response?.data || error.message);
+      throw error; // Lança o erro para ser tratado em outro lugar
+    }
+  };
+  
+
+  export const editarUsuario = (usuario, id) => {
+    const token = localStorage.getItem("token");
+    return api.put(`${import.meta.env.VITE_API_URL}usuario/${id}`, usuario, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+  };
+
+  export const buscarAdocoes = async (adotanteId, token) => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}adocoes?adotante_id=${adotanteId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao buscar adoções:', error);
+      throw error;
+    }
+  };
 
 // const testLogin = async () => {
 //     const email = "testando@test.com"; 

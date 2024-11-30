@@ -14,8 +14,8 @@ function HomeAdmin() {
       >
         <div className="container">
           <h1 className="display-3 fw-bold">Bem-vindo</h1>
-          <p className="lead my-4">
-            Simplifique sua gestão de usuários com ferramentas modernas e intuitivas.
+          <p className="lead my-4 text-dark">
+            Simplifique sua gestão de usuários e pets de forma fácil e intuitivas.
           </p>
           <Link to="/usuarios-list" className="btn btn-success btn-lg">
             Começar Agora
@@ -53,13 +53,13 @@ function HomeAdmin() {
             </div>
             <div className="col-md-4 text-center">
               <div className="feature-card shadow p-4">
-                <i className="bi bi-person-circle text-danger fs-1 mb-3"></i>
-                <h5>Configurar Perfis</h5>
+                <i className="bi bi-person-plus-fill text-warning fs-1 mb-3"></i>
+                <h5>Cadastrar Pets</h5>
                 <p>
-                  Personalize perfis conforme as necessidades do seu atual plano de  negócio.
+                Adicione novos pets facilmente com nosso formulário simples.
                 </p>
-                <Link to="/usuarios-form" className="btn btn-outline-danger">
-                  Configurar
+                <Link to="/pets-form" className="btn btn-outline-warning">
+                  Cadastrar
                 </Link>
               </div>
             </div>

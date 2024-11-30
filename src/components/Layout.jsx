@@ -65,7 +65,7 @@ function Layout({ children }) {
   }, [location]);
 
   // Rotas onde o layout não será aplicado
-  const noLayoutRoutes = ["/login", "/"];
+  const noLayoutRoutes = ["/login", "/", "/cadastro"];
 
   // Verifica se a rota atual está nas rotas sem layout
   const isNoLayoutRoute = noLayoutRoutes.includes(location.pathname);
